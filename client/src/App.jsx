@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import Carousel from "./Carousel";
 
 function App() {
   const [carToggle, setCarToggle] = useState(false)
@@ -10,7 +11,17 @@ function App() {
     onClick = {() => setCarToggle(!carToggle)}>
       {carToggle ? "Show Fashion" : "Show Cards"}
     </button>
-    
+      {carToggle ? (
+        <Carousel
+        toggle = {carToggle}
+        url = "https://frontend-assessment-service.vcomm.io/cars"
+        />
+      ) : (
+        <Carousel
+        tottle = {carToggle}
+        url = "https://frontend-assessment-service.vcomm.io/"
+        />
+      )}
     </div>
   );
 }
