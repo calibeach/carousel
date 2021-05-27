@@ -17,7 +17,7 @@ export default function Carousel(props) {
     useEffect(() => {
         fetch(url)
         .then((res) => res.json())
-        .then((data) = setDetails(data.data))
+        .then((data) => setDetails(data.data))
         .then(() => {
             setIsLoading(false);
         })
@@ -45,6 +45,8 @@ export default function Carousel(props) {
         })
     }
 
+
+
     const createDots = () => {
         const dots = [];
         for (let i = 0; i < details.length; i++) {
@@ -61,9 +63,38 @@ export default function Carousel(props) {
         return dots;
     }
 
+    const handleClick = (direction) => {
+        if (details && direction === "forward") {
+            return setCurrent((prevCurrent) => {
+                prevCurrent === details.length - 1 ? 0 : preCurrent + 1
+            })
+        }
+        if (details && direction === "backward") {
+            return setCurrent((prevCurrent) => {
+                prevCurrent === 0 ? details.length - 1: prevCurrent - 1
+            })
+        }
+        return
+    }
+
     return (
         <div className = "carousel">
-            This is Carousel
+            <FontAwesomeIcon 
+                className = "leftArrow"
+                onClick = {() => handleClick("backward")}
+                icon = {faChevronLeft}
+                size = "2x"
+                inverse
+            />
+        <FontAwesomeIcon
+            className = "rightArrow"
+            onClick = {() => handleClick("forward")}
+            icon = {faChevronRight}
+            size = "2x"
+            inverse
+        />
+        {isLoading ? <h1>Loading...</h1> : createCards()}
+        <div className = "dotsDiv">{isLoading ? "" : createDots()}</div>
         </div>
     )
 

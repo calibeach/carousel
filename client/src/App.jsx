@@ -9,7 +9,7 @@ function App() {
     <div className = "app">
     <button type = "button" className = {carToggle ? "fashionButton" : "carButton"}
     onClick = {() => setCarToggle(!carToggle)}>
-      {carToggle ? "Show Fashion" : "Show Cards"}
+      {carToggle ? "Show Fashion" : "Show Cars"}
     </button>
       {carToggle ? (
         <Carousel
