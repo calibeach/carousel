@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 
-const { PORT } = process.env;
+const  PORT = 3000;
 const app = express();
 
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
