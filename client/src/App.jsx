@@ -4,7 +4,6 @@ import Carousel from "./Carousel";
 function App() {
   const [carToggle, setCarToggle] = useState(false)
 
-
   return (
     <div className = "app">
     <button type = "button" className = {carToggle ? "fashionButton" : "carButton"}
